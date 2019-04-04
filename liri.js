@@ -1,6 +1,9 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
+var fs = require("fs");
+var axios = require("axios");
+var moment = require('moment');
 
 // var spotify = new Spotify(keys.spotify);
 
@@ -23,24 +26,44 @@ switch (process.argv[2]) {
 
 // This section draws from the Bands in Town API
 
-function concert_this(){
+function concert_this() {
     console.log("Concert this run succesfully!");
+    var artist = "";
+    for (i = 3; i < process.argv.length; i++) {
+        if (i == 3) {
+            artist += process.argv[i];
+        }
+        else {
+            artist += "%20" + process.argv[i];
+        };
+    };
+    queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+    console.log(queryUrl);
+    axios.get(queryUrl)
+        .then(function (response) {
+            console.log(response.data[0].venue.name);
+            console.log(response.data[0].venue.city + ", " + response.data[0].venue.region + ", " + response.data[0].venue.country);
+            console.log(moment(response.data[0].datetime).format("MM/DD/YYYY"));
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 };
 
 // This section draws from the Spotify API
 
-function spotify_this(){
+function spotify_this() {
     console.log("Spotify this run succesfully!");
 };
 
 // This section draws from the OMDB API
 
-function movie_this(){
+function movie_this() {
     console.log("Movie this this run succesfully!");
 };
 
 // This section draws from the random.text file
 
-function do_this(){
+function do_this() {
     console.log("Do this this run succesfully!");
 };
