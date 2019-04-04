@@ -4,8 +4,9 @@ var keys = require("./keys.js");
 var fs = require("fs");
 var axios = require("axios");
 var moment = require('moment');
+var Spotify = require('node-spotify-api');
+var spotify = new Spotify(keys.spotify);
 
-// var spotify = new Spotify(keys.spotify);
 
 // This section creates a switch
 
@@ -53,7 +54,32 @@ function concert_this() {
 // This section draws from the Spotify API
 
 function spotify_this() {
-    console.log("Spotify this run succesfully!");
+
+    var song = "";
+    for (i = 3; i < process.argv.length; i++) {
+        if (i == 3) {
+            song += process.argv[i];
+        }
+        else {
+            song += " " + process.argv[i];
+        };
+    };
+
+
+    spotify.search({ type: 'track', query: song }, function (err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        // Name of the song
+        console.log(data.tracks.items[0].name);
+        // Name of the artist
+        console.log(data.tracks.items[0].artists[0].name);
+        // Name of the album
+        console.log(data.tracks.items[0].album.name);
+        // Name of the spotify url
+        console.log(data.tracks.items[0].external_urls.spotify);
+    }
+    );
 };
 
 // This section draws from the OMDB API
