@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 var keys = require("./keys.js");
-var fs = require("fs");
+const fs = require("fs");
 var axios = require("axios");
 var moment = require('moment');
 var Spotify = require('node-spotify-api');
@@ -153,11 +153,16 @@ function movie_this() {
         }
     };
 
-
-
-
 // This section draws from the random.text file
 
 function do_this() {
-    console.log("Do this this run succesfully!");
+    // console.log("Do this this run succesfully!");
+    var filename = './random.text';
+    fs.readFile(filename, 'utf8', (err, data) =>{
+        if (err){
+        console.log("Whoops, there was an error");
+        }        
+        console.log(data);
+      });
 };
+
