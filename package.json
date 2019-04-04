@@ -1,0 +1,26 @@
+{
+  "name": "LIRI-Bot",
+  "version": "1.0.0",
+  "description": "In this applicationis a language interpretation and recognition interface that allows the user to use the command line to enter parameters and gives you back music data from Spotify, concert data from Bands in Town, and movie data from OMDB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willmcfall/LIRI-Bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willmcfall/LIRI-Bot/issues"
+  },
+  "homepage": "https://github.com/willmcfall/LIRI-Bot#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^7.0.0",
+    "moment": "^2.24.0",
+    "node-spotify-api": "^1.0.7"
+  }
+}
