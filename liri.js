@@ -68,6 +68,25 @@ function spotify_this() {
 
     spotify.search({ type: 'track', query: song }, function (err, data) {
         if (err) {
+            console.log("Whoops, there has been an error. Aaaanyway, here is some Ace of Base!");
+            aceOfBase();
+            return
+        }
+        // Name of the song
+        console.log(data.tracks.items[0].name);
+        // Name of the artist
+        console.log(data.tracks.items[0].artists[0].name);
+        // Name of the album
+        console.log(data.tracks.items[0].album.name);
+        // Name of the spotify url
+        console.log(data.tracks.items[0].external_urls.spotify);
+    }
+    );
+};
+
+function aceOfBase() {
+    spotify.search({ type: 'track', query: 'Ace of Base' }, function (err, data) {
+        if (err) {
             return console.log('Error occurred: ' + err);
         }
         // Name of the song
@@ -86,7 +105,56 @@ function spotify_this() {
 
 function movie_this() {
     console.log("Movie this this run succesfully!");
-};
+    var movie = "";
+    for (i = 3; i < process.argv.length; i++) {
+        if (i == 3) {
+            movie += process.argv[i];
+        }
+        else {
+            movie += "+" + process.argv[i];
+        };
+    };
+    queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy"
+    console.log(queryUrl);
+    axios.get(queryUrl)
+        .then(function (response) {
+            console.log(response.data.Title);
+            console.log(response.data.Year);
+            console.log(response.data.imdbRating);
+            console.log(response.data.Ratings[1].Value);
+            console.log(response.data.Country);
+            console.log(response.data.Language);
+            console.log(response.data.Plot);
+            console.log(response.data.Actors);
+        })
+        .catch(function (error) {
+            console.log("Whoops, there has been an error. here is Mr. Nobody");
+            mrNobody();
+        });
+
+
+        function mrNobody(){
+            queryUrl = "http://www.omdbapi.com/?t=Mr+Nobody&y=&plot=short&apikey=trilogy"
+            console.log(queryUrl);
+            axios.get(queryUrl)
+                .then(function (response) {
+                    console.log(response.data.Title);
+                    console.log(response.data.Year);
+                    console.log(response.data.imdbRating);
+                    console.log(response.data.Ratings[1].Value);
+                    console.log(response.data.Country);
+                    console.log(response.data.Language);
+                    console.log(response.data.Plot);
+                    console.log(response.data.Actors);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    };
+
+
+
 
 // This section draws from the random.text file
 
