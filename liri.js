@@ -28,7 +28,7 @@ switch (process.argv[2]) {
 // This section draws from the Bands in Town API
 
 function concert_this() {
-    console.log("Concert this run succesfully!");
+    // console.log("Concert this run succesfully!");
     var artist = "";
     for (i = 3; i < process.argv.length; i++) {
         if (i == 3) {
@@ -39,7 +39,7 @@ function concert_this() {
         };
     };
     queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
-    console.log(queryUrl);
+    // console.log(queryUrl);
     axios.get(queryUrl)
         .then(function (response) {
             console.log(response.data[0].venue.name);
@@ -104,7 +104,7 @@ function aceOfBase() {
 // This section draws from the OMDB API
 
 function movie_this() {
-    console.log("Movie this this run succesfully!");
+    // console.log("Movie this this run succesfully!");
     var movie = "";
     for (i = 3; i < process.argv.length; i++) {
         if (i == 3) {
@@ -115,7 +115,7 @@ function movie_this() {
         };
     };
     queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy"
-    console.log(queryUrl);
+    // console.log(queryUrl);
     axios.get(queryUrl)
         .then(function (response) {
             console.log(response.data.Title);
@@ -135,7 +135,7 @@ function movie_this() {
 
         function mrNobody(){
             queryUrl = "http://www.omdbapi.com/?t=Mr+Nobody&y=&plot=short&apikey=trilogy"
-            console.log(queryUrl);
+            // console.log(queryUrl);
             axios.get(queryUrl)
                 .then(function (response) {
                     console.log(response.data.Title);
