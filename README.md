@@ -9,7 +9,7 @@ This will search the Bands in Town Artist Events API for an artist and render th
 * Venue location
 * Date of the Event (use moment to format this as "MM/DD/YYYY")
 
-### node liri.js spotify-this-song <song name here>
+### node liri.js spotify-this <song name here>
 This will search the Spotify API for an artist and render the following information about each song to the terminal:
 * Artist(s)
 * Song's name
