@@ -39,7 +39,7 @@ function concert_this() {
         };
     };
     queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
-    // console.log(queryUrl);
+    console.log(queryUrl);
     axios.get(queryUrl)
         .then(function (response) {
             console.log(response.data[0].venue.name);
